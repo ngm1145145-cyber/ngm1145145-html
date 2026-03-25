@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>视频音频播放器</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<center>
+<h1>视频音频播放器</h1>
+<p></p>
+libilibi播放器（如果不能播放说明你的浏览器不支持哦）：
+<p></p>
+<video width="1080" height="720" controls>
+<source src="music.mp3" type="audio/mpeg">
+</video>
+<p></p>
+<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
+<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+<video id="my-video" class="video-js" controls preload="auto" width="1080" height="720" data-setup="{}">
+<source src="music.mp3" type="audio/mpeg">
+</video>
+<p></p>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
+<script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.js"></script>
+<video id="player" width="1080" height="720" controls playsinline>
+<source src="music.mp3" type="audio/mpeg">
+</video>
+<script>
+const player = new Plyr('#player');
+</script>
+<p></p>
+
+<p></p>
+</body>
+</html>
