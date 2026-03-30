@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: #81888d;
+    padding: 1rem;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+.navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+.navbar a:hover {
+    color: #ffd343;
+}
+
+/* 内容区 */
+.container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+h1 {
+    text-align: center;
+    font-size: 41px;
+    background: linear-gradient(90deg, #00fff2, #3a78d5, #5043ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2%;
+    font-weight: 800;
+    letter-spacing: 1px;
+    animation: fadeIn 0.8s ease;
+}
+h2 {
+    color: #a7cceb;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+p {
+    color: #c9e6fd;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+h3 {
+    color: #c9e6fd;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+h4 {
+    color: #c9e6fd;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 29px
+}
+a {
+    color: #c9e6fd;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 底部 */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    margin-top: 3rem;
+}
+/* 深色模式下的样式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #333333; /* 深色背景 */
+    color: #ffffff; /* 亮色文本 */
+  }
+  .card {
+  background-color: #333333;
+  }
+}
+
+/* 浅色模式下的样式 */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff; /* 浅色背景 */
+    color: #333333; /* 暗色文本 */
+  }
+  .card {
+  background-color: #ffffff;
+  }
+}
+.card {
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f1f1;
+}
+
+/* 卡片标题 */
+.card h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fb7299;
+  margin: 0 0 12px 0;
+  border-left: 4px solid #fb7299;
+  padding-left: 10px;
+}
+
+/* 卡片内小标题 */
+.card h3 {
+  font-size: 16px;
+  margin: 12px 0 8px 0;
+}
+
+/* 卡片内段落 */
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 6px 0;
+}
+
+/* 卡片内链接 */
+.card a {
+  text-decoration: none;
+}
+.card a:hover {
+  color: rgb(18, 157, 221);
+  text-decoration: underline;
+}
+/* 统一美化所有跳转按钮 */
+button[onclick="scrollToTarget()"],
+a[href="#section2"],
+a[href="#section3"] {
+  display: inline-block;
+  background: #fb7299;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
+  margin: 0 4px;
+}
+
+button[onclick="scrollToTarget()"]:hover,
+a[href="#section2"]:hover,
+a[href="#section3"]:hover {
+  background: #f36a8f;
+}

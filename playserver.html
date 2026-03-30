@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="playserver.ico" type="image/x-icon">
+    <title>多功能媒体播放器</title>
+
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            min-height: 100vh;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 48px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5, #7b43ff);
+            background-clip : text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 35px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .file-select-container {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeUp 0.6s ease;
+        }
+
+        #fileSelect {
+            padding: 14px 25px;
+            font-size: 18px;
+            border-radius: 12px;
+            background: #1e2430;
+            color: #fff;
+            border: 1px solid #00d2ff;
+            width: 80%;
+            max-width: 700px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .file-info {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #adbac7;
+        }
+
+        .player-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            animation: fadeUp 0.8s ease backwards;
+        }
+
+        .player-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,210,255,0.3);
+        }
+
+        .card-title {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-bottom: 22px;
+            font-weight: 500;
+        }
+
+        video {
+            width: 100% !important;
+            max-width: 1080px;
+            border-radius: 14px;
+            outline: none;
+            margin: 0 auto;
+        }
+
+        .video-js, #plyrPlayer {
+            border-radius: 14px !important;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #00d2ff; border-radius: 4px; }
+    </style>
+</head>
+
+<body>
+    <h1 class="main-title">多功能媒体播放器</h1>
+
+    <div class="file-select-container">
+        <select id="fileSelect">
+            <option value="">—— 请选择媒体文件 ——</option>
+        </select>
+        <div class="file-info" id="fileInfo">未选择文件</div>
+    </div>
+
+    <!-- 原生播放器 -->
+    <div class="player-card">
+        <div class="card-title">🔹 原生浏览器播放器</div>
+        <video id="nativePlayer" controls controlslist="play pause volume download fullscreen" download preload="auto"></video>
+    </div>
+
+    <!-- Video.js 播放器（音频不缩小） -->
+    <div class="player-card">
+        <div class="card-title">🔹 Video.js 专业播放器</div>
+        <video id="videoJsPlayer" class="video-js vjs-big-play-centered" controls preload="auto"></video>
+    </div>
+
+    <!-- Plyr 播放器 -->
+    <div class="player-card">
+        <div class="card-title">🔹 Plyr 高级播放器</div>
+        <video id="plyrPlayer" controls playsinline></video>
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
+
+    <script>
+        // ====================== 在这里配置你的同目录文件 ======================
+        const mediaFiles = [
+            "1_1_《蔚蓝档案》EP-手心里的明天_《蔚蓝档案》EP-手心里的明天.mp4",
+            "music.mp3",
+            // 继续加文件
+        ];
+
+        // Video.js 初始化
+        const videoJsPlayer = videojs('videoJsPlayer', {
+            fluid: true,
+            autoplay: false,
+            playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 2],
+            controlBar: {
+                children: ['playToggle','volumePanel','currentTimeDisplay','timeDivider','durationDisplay','progressControl','remainingTimeDisplay','playbackRateMenuButton','fullscreenToggle']
+            }
+        });
+
+        // Plyr 初始化
+        const plyrPlayer = new Plyr('#plyrPlayer', {
+            controls: ['play-large','play','progress','current-time','duration','mute','volume','settings','pip','download','fullscreen'],
+            settings: ['quality','speed'],
+            speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] }
+        });
+
+        // 元素
+        const nativePlayer = document.getElementById('nativePlayer');
+        const fileSelect = document.getElementById('fileSelect');
+        const fileInfo = document.getElementById('fileInfo');
+        const vjsEl = document.getElementById('videoJsPlayer');
+        let currentFile = '';
+
+        // 生成文件列表
+        mediaFiles.forEach(file => {
+            const opt = document.createElement('option');
+            opt.value = file;
+            opt.textContent = file;
+            fileSelect.appendChild(opt);
+        });
+
+        // 选择文件播放
+        fileSelect.addEventListener('change', function () {
+            const file = this.value;
+            if (!file) {
+                fileInfo.textContent = '未选择文件';
+                nativePlayer.src = '';
+                videoJsPlayer.src('');
+                plyrPlayer.source = { type: 'video', sources: [] };
+                return;
+            }
+
+            currentFile = file;
+            fileInfo.textContent = `正在播放：${file}`;
+            const isAudio = /\.(mp3|wav|ogg|flac|m4a)$/i.test(file);
+
+            // ====================== 已删除：音频缩小逻辑 ======================
+            // 播放音频时，Video.js 保持正常大小，不缩小
+
+            // 加载服务器文件
+            nativePlayer.src = file;
+            nativePlayer.load();
+
+            videoJsPlayer.src({ src: file });
+            videoJsPlayer.load();
+
+            plyrPlayer.stop();
+            plyrPlayer.source = {
+                type: isAudio ? 'audio' : 'video',
+                sources: [{ src: file }]
+            };
+            plyrPlayer.restart();
+        });
+
+        // 下载修复
+        plyrPlayer.on('download', e => {
+            if (!currentFile) {
+                alert('请先选择文件！');
+                e.preventDefault();
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = currentFile;
+            a.download = currentFile;
+            a.click();
+            e.preventDefault();
+        });
+    </script>
+<center>
+<a href="index.html">返回首页</a>
+</center>
+</body>
+</html>
