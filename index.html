@@ -1,33 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<title>视频音频播放器</title>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="index.ico" type="image/x-icon">
+<title>ngm1145145的个人博客</title>
+<script src="javascript.js" defer></script>
 </head>
 <body>
-<center>
-<h1>视频音频播放器</h1>
-<p></p>
-视频音频播放器（如果不能播放说明你的浏览器不支持哦）：
-<p></p>
-<video width="1080" height="720" controls>
-<source src="music.mp3" type="audio/mpeg">
-</video>
-<p></p>
-<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
-<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-<video id="my-video" class="video-js" controls preload="auto" width="1080" height="720" data-setup="{}">
-<source src="music.mp3" type="audio/mpeg">
-</video>
-<p></p>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
-<script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.js"></script>
-<video id="player" width="1080" height="720" controls playsinline>
-<source src="music.mp3" type="audio/mpeg">
-</video>
-<script>
-const player = new Plyr('#player');
-</script>
-<p></p>
-<p></p>
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">博客首页</a></li>
+    <li><a href="play.html">多媒体播放器（本地）</a></li>
+    <li><a href="playserver.html">多媒体播放器（服务器）</a></li>
+    <li><a href="friendlink.html">友情链接</a></li>
+    <li><a href="about.html">关于此博客</a></li>
+  </ul>
+</nav>
+<h1>ngm1145145的个人博客</h1>
+<h2>这是一个我自己的博客网站，可以到处逛逛o！</h2>
+<button onclick="scrollToTarget()">跳转到介绍</button>
+<a href="#section2">跳转到我的视频</a>
+<a href="#section3">跳转到我的相关链接</a>
+
+<!-- 卡片1：个人介绍 -->
+<div class="card" id="target">
+  <h4>介绍</h4>
+  <h3>ngm1145145是谁？</h3>
+  <p>一个热爱剪辑的初中牲视频制作者，大部分会发游戏视频。</p>
+  <p>喜欢玩phi，蔚蓝档案(ba)，我的世界，星塔旅人等。</p>
+  <p>小号：ngm1145145_小</p>
+  <p>不要忘了去B站给我一键三连+关注o！</p>
+</div>
+
+<!-- 卡片2：我的视频 -->
+<div class="card" id="section2">
+  <h4>我的视频</h4>
+  <h3>[教程向]如何在安卓手机（或平板）上玩到我的世界JAVA版</h3>
+  <a href="https://www.bilibili.com/video/BV1Jpf3BVEbB" target="_blank">https://www.bilibili.com/video/BV1Jpf3BVEbB/</a>
+  <h3>教程向：如何安装mc客户端和服务端</h3>
+  <a href="https://www.bilibili.com/video/BV1mVxNzuEAy/" target="_blank">https://www.bilibili.com/video/BV1mVxNzuEAy/</a>
+</div>
+
+<!-- 卡片3：我的相关链接 -->
+<div class="card" id="section3">
+  <h4>我的相关链接</h4>
+  <a href="https://space.bilibili.com/3546816450660460?spm_id_from=333.337.0.0" target="_blank">https://space.bilibili.com/3546816450660460?spm_id_from=333.337.0.0</a>
+  <p></p>
+  <a href="https://space.bilibili.com/3546891029580181?spm_id_from=333.337.0.0" target="_blank">https://space.bilibili.com/3546891029580181?spm_id_from=333.337.0.0</a>
+  <p></p>
+  <a href="https://github.com/ngm1145145-cyber/" target="_blank">https://github.com/ngm1145145-cyber/</a>
+  <p></p>
+  <a href="https://gitcode.com/ngm1145145/" target="_blank">https://gitcode.com/ngm1145145/</a>
+  <p></p>
+  <a href="https://gitlab.com/ngm1145145-cyber/" target="_blank">https://gitlab.com/ngm1145145-cyber/</a>
+  <p></p>
+  <a href="https://jihulab.com/ngm1145145-cyber/" target="_blank">https://jihulab.com/ngm1145145-cyber/</a>
+  <p></p>
+  <a href="https://gitee.com/ngm1145145-cyber/" target="_blank">https://gitee.com/ngm1145145-cyber/</a>
+  <p>我的QQ:2904043917</p>
+  <p>我的邮箱:ngm1145145@gmail.com</p>
+  <p>ngm1145145@outlook.com</p>
+</div>
+
+
+<footer>
+    <p>&copy; 2026 ngm1145145 Powered by Html</p>
+</footer>
 </body>
 </html>
